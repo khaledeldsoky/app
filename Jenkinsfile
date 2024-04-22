@@ -17,9 +17,7 @@ pipeline {
         }
             stage('Deploy App') {
       steps {
-        script {
-          kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kube")
-        }
+sh 'kubectl get pod '
       }
     }
     }
