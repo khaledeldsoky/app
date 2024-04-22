@@ -15,14 +15,13 @@ pipeline {
               }
             }
         }
-    }
-      stages {
-    stage('Deploy App') {
+            stage('Deploy App') {
       steps {
         script {
           kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kube")
         }
       }
     }
-}
+    }
+
 }
