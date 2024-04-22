@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+        agent {
+       label "aws_slave"
+    }
     tools {
         maven 'khaled'
     }
