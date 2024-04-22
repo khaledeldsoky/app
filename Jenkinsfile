@@ -1,5 +1,5 @@
 pipeline {
-        agent {
+    agent {
        label "aws_slave"
     }
     tools {
@@ -7,7 +7,6 @@ pipeline {
     }
     stages {
         stage('push image ') {
-            
             steps {
               withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'password', usernameVariable: 'username')]){
               sh 'docker build -t khaledmohamedatia/app .'
@@ -16,5 +15,13 @@ pipeline {
               }
             }
         }
+    }
+      stages {
+    stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "pod.yml", kubeconfigId: "kube")
+        }
+      }
     }
 }
