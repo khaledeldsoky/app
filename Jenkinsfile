@@ -6,7 +6,7 @@ pipeline {
         maven 'khaled'
     }
     stages {
-        stage('Hello') {
+        stage('push image ') {
             steps {
               withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'password', usernameVariable: 'username')]) 
               sh 'docker build -t khaledmohamedatia/app .'
