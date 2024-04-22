@@ -9,7 +9,7 @@ pipeline {
         stage('push image ') {
             
             steps {
-              withCredentials([usernamePassword(credentialsId: 'khaledmohamedatia', passwordVariable: 'password', usernameVariable: 'username')]){
+              withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'password', usernameVariable: 'username')]){
               sh 'docker build -t khaledmohamedatia/app .'
               sh 'docker login -u  ${username} -p  ${password}'
               sh 'docker push khaledmohamedatia/app'
