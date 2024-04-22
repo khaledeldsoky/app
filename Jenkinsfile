@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'khaled'
+    }
     stages {
         stage('Hello') {
             steps {
