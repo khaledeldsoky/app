@@ -1,15 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    run: hello-docker
-  name: hello-docker
-  namespace: foo
+  name: nginx
 spec:
   containers:
-  - image: khaledmohamedatia/app
-    name: hello-docker
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Never
-status: {}
+  - name: nginx
+    image: khaledmohamedatia/app
+
