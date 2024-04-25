@@ -9,7 +9,16 @@ pipeline {
     stages {
         stage('Deploy App ') {
             steps {
-                sh 'sh image_tag.sh deployment.yml'
+                withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+                sh """
+                sh image_tag.sh deployment.yml
+                git config --global user.name khaledeldsoky
+                git config --global user.email khlaedmohamedeldsoky@gmail.com
+                git add .
+                git push https://${USER}:${PASSWORD}@git@github.com:khaledeldsoky/app.git HEAD:CD
+                """
+
+                }
             }
         }
     }
