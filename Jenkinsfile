@@ -8,8 +8,7 @@ pipeline {
     stages {
         stage('Deploy App ') {
             steps {
-                unstash 'github_commit'
-                echo "The value of myVariable is ${image_tag}"
+                sh 'sh image_tag.sh image_tag.sh'
             }
         }
     }
