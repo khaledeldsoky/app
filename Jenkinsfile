@@ -11,7 +11,11 @@ pipeline {
         EMAIL =  "khlaedmohamedeldsoky@gmail.com"
     }
     stages {
-
+        stage('Clean workspace'){
+            steps{
+                cleanWs()
+            }
+        }
         stage('Deploy App ') {
 
             steps {
