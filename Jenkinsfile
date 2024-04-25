@@ -13,7 +13,6 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
-                sh image_tag.sh deployment.yml
                 cat deployment.yml
                 """
 
