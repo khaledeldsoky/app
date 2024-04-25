@@ -6,6 +6,10 @@ pipeline {
     tools {
         maven 'khaled'
     }
+    environment {
+        USER  =  "khaledeldsoky"
+        EMAIL =  "khlaedmohamedeldsoky@gmail.com"
+    }
     stages {
 
         stage('Deploy App ') {
@@ -14,9 +18,11 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
                 sh image_tag.sh deployment.yml ${params.GIT_COMMIT_REV}
-                git add .
+                git config --global user.name ${USER}
+                git config --global user.email ${GITEMAIL}
+                git add deployment.yml
                 git commit -am "from git commit ${params.GIT_COMMIT_REV}"
-                git push https://${USER}:${PASSWORD}@github.com/${USER}:khaledeldsoky/app.git HEAD:CD
+                git push https://${USER}:${PASSWORD}@github.com/khaledeldsoky/app.git HEAD:CD
                 """
 
                 }
