@@ -29,7 +29,6 @@ pipeline {
                 }
             }
         }
-
         stage('Trigger CD job ') {
                 steps {
                 echo "triggering CD"
