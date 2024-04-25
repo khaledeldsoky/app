@@ -6,17 +6,9 @@ pipeline {
         maven 'khaled'
     }
     stages {
-        stage('push image ') {
+        stage('Deploy App ') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh 'docker build -t khaledmohamedatia/app .'
-                    sh 'docker login -u  ${username} -p  ${password}'
-                    sh 'docker push khaledmohamedatia/app'
-                }
-            }
-        }
-        stage('Deploy App') {
-            steps {
+                sh 'sed -i "s/khaledmohamedatia\/app:.*/khaledmohamedatia\/app:${GIT_COMMIT_REV}/g" deployment.yml'
                 sh 'kubectl apply -f deployment.yml'
             }
         }
