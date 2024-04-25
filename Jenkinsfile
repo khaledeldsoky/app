@@ -7,7 +7,7 @@ pipeline {
         DOCKER_IMAGE_NAME = "khaledmohamedatia/app"
     }
     parameters {
-        string(name: 'GIT_COMMIT_REV', value: env.GIT_COMMIT_REV)
+        string(name: 'GIT_COMMIT_REV', defaultValue: env.GIT_COMMIT_REV)
     }
     tools {
         maven 'khaled'
