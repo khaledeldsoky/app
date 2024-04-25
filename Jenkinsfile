@@ -11,7 +11,7 @@ pipeline {
         EMAIL =  "khlaedmohamedeldsoky@gmail.com"
     }
     parameters {
-        string(name: 'GIT_COMMIT_REV', value: env.GIT_COMMIT_REV)
+        string(name: 'GIT_COMMIT_REV', defaultValue: env.GIT_COMMIT_REV)
     }
     stages {
         stage('Clean workspace'){
