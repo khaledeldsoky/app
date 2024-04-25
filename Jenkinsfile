@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Deploy App ') {
             steps {
-                sh 'sed -i -E "s/khaledmohamedatia/app:\\\\1/g" deployment.yml'
-                sh 'kubectl apply -f deployment.yml'
+                unstash 'github_commit'
+                echo "The value of myVariable is ${image_tag}"
             }
         }
     }
