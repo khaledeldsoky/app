@@ -16,6 +16,7 @@ pipeline {
                 sh image_tag.sh deployment.yml ${params.GIT_COMMIT_REV}
                 echo  ${params.GIT_COMMIT_REV}
                 cat deployment.yml
+                git push origin CD
                 """
 
                 }
