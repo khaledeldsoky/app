@@ -11,12 +11,9 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
+                sed -i "s/khaledmohamedatia\/app:.*/khaledmohamedatia\/app:${GIT_COMMIT_REV}/g" $1
                 sh image_tag.sh deployment.yml
-                git config --global user.name khaledeldsoky
-                git config --global user.email khlaedmohamedeldsoky@gmail.com
-                git add .
-                git commit -m "add"
-                git push origin CD
+                cat deployment.yml
                 """
 
                 }
