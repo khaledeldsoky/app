@@ -7,7 +7,7 @@ pipeline {
         maven 'khaled'
     }
     environment {
-        USER  =  "khaledeldsoky"
+        USER_NAME  =  "khaledeldsoky"
         EMAIL =  "khlaedmohamedeldsoky@gmail.com"
     }
     stages {
@@ -18,7 +18,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
                 sh image_tag.sh deployment.yml ${params.GIT_COMMIT_REV}
-                git config --global user.name ${USER}
+                git config --global user.name ${USER_NAME}
                 git config --global user.email ${EMAIL}
                 git add deployment.yml
                 git commit -am "from git commit ${params.GIT_COMMIT_REV}"
