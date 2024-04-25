@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'aws_slave'
+        label 'ec2_slave'
     }
     environment {
         DOCKER_IMAGE_NAME = "khaledmohamedatia/app"
