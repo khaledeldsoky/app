@@ -16,6 +16,12 @@ pipeline {
                 cleanWs()
             }
         }
+        stage('Checkout') {
+            steps {
+                // Check out the source code from Git
+                git branch: 'CD', url: 'https://github.com/khaledeldsoky/app.git'
+            }
+        }
         stage('Deploy App ') {
 
             steps {
