@@ -9,6 +9,12 @@ pipeline {
         maven 'khaled'
     }
     stages {
+        stage('Checkout') {
+            steps {
+                // Check out the source code from Git
+                git branch: 'main', url: 'https://github.com/khaledeldsoky/app.git'
+            }
+        }
         stage('push image ') {
             steps {
                 script {
