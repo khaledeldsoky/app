@@ -15,7 +15,7 @@ pipeline {
                 git config --global user.name khaledeldsoky
                 git config --global user.email khlaedmohamedeldsoky@gmail.com
                 git add .
-                git push https://${USER}:${PASSWORD}@git@github.com:khaledeldsoky/app.git HEAD:CD
+                git push https://${USER}:${PASSWORD}@github.com/khaledeldsoky/app.git HEAD:CD
                 """
 
                 }
