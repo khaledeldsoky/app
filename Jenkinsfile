@@ -14,8 +14,6 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
                 sh image_tag.sh deployment.yml ${params.GIT_COMMIT_REV}
-                echo  ${params.GIT_COMMIT_REV}
-                cat deployment.yml
                 git add .
                 git commit "from git commit ${params.GIT_COMMIT_REV}"
                 git push origin CD
