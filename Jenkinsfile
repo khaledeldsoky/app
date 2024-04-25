@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        label 'ec2_slave'
-    }
+    // agent {
+    //     label 'ec2_slave'
+    // }
+    agent any
     environment {
         DOCKER_IMAGE_NAME = "khaledmohamedatia/app"
     }
