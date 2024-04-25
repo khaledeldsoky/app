@@ -2,7 +2,6 @@ pipeline {
     agent {
         label 'ec2'
     }
-    // agent any
     tools {
         maven 'khaled'
     }
