@@ -22,7 +22,7 @@ pipeline {
                 git config --global user.email ${EMAIL}
                 git add deployment.yml
                 git commit -am "from git commit ${params.GIT_COMMIT_REV}"
-                git push https://${USER}:${PASSWORD}@github.com/khaledeldsoky/app.git HEAD:CD
+                git push https://${PASSWORD}@github.com/khaledeldsoky/app.git HEAD:CD
                 """
                 }
             }
