@@ -33,7 +33,8 @@ pipeline {
                 sh image_tag.sh deployment.yml ${params.GIT_COMMIT_REV}
                 git config --global user.name ${USER_NAME}
                 git config --global user.email ${EMAIL}
-                git add deployment.yml
+                cat deployment.yml 
+                git add .
                 git commit -m "from git commit ${params.GIT_COMMIT_REV}"
                 git push https://${PASSWORD}@github.com/khaledeldsoky/app.git HEAD:CD
                 """
