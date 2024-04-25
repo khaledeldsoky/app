@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'aws_slave'
+        label 'ec2_slave'
     }
     tools {
         maven 'khaled'
