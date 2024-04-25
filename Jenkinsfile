@@ -1,8 +1,8 @@
 pipeline {
-    // agent {
-    //     label 'ec2_slave'
-    // }
-    agent any
+    agent {
+        label 'ec2_slave'
+    }
+    // agent any
     tools {
         maven 'khaled'
     }
