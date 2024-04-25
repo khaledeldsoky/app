@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'ec2_slave'
+        label 'ec2'
     }
     // agent any
     tools {
