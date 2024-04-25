@@ -1,7 +1,5 @@
 pipeline {
-    // agent {
-    //     label 'ec2_slave'
-    // }
+
     agent any
     environment {
         DOCKER_IMAGE_NAME = "khaledmohamedatia/app"
@@ -15,7 +13,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Check out the source code from Git
                 git branch: 'main', url: 'https://github.com/khaledeldsoky/app.git'
             }
         }
