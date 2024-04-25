@@ -16,7 +16,7 @@ pipeline {
                 git config --global user.email khlaedmohamedeldsoky@gmail.com
                 git add .
                 git commit -m "add"
-                git push  -u origin CD
+                git push origin CD
                 """
 
                 }
