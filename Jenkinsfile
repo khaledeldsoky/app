@@ -25,6 +25,7 @@ pipeline {
                     sh 'docker build -t ${DOCKER_IMAGE_NAME}:${GIT_COMMIT_REV} .'
                     sh 'docker login -u  ${username} -p  ${password}'
                     sh 'docker push ${DOCKER_IMAGE_NAME}:${GIT_COMMIT_REV}'
+                    sh 'sh image_tag.sh'
                 }
             }
         }
