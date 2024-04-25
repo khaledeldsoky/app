@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Deploy App ') {
             steps {
-                sh "sed -E -i'' "s/khaledmohamedatia\/app:.*/khaledmohamedatia\/app:${GIT_COMMIT_REV}/g" deployment.yml"
+                sh 'sed -i -E "s/khaledmohamedatia/app:\\\\1/g" deployment.yml'
                 sh 'kubectl apply -f deployment.yml'
             }
         }
