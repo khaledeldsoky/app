@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: khaledmohamedatia
-        image: khaledmohamedatia/app
+        image: khaledmohamedatia/app:v2
         ports:
         - containerPort: 80
 ---
