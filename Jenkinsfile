@@ -10,7 +10,7 @@ pipeline {
         USER_NAME  =  "khaledeldsoky"
         EMAIL =  "khlaedmohamedeldsoky@gmail.com"
     }
-    parameters: {
+    parameters {
         string(name: 'GIT_COMMIT_REV', value: env.GIT_COMMIT_REV)
     }
     stages {
