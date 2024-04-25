@@ -17,7 +17,7 @@ pipeline {
                 git checkout CD 
                 git add .
                 git commit -am "from git commit ${params.GIT_COMMIT_REV}"
-                git push origin CD
+                git push https://${USER}:${PASSWORD}@github.com/${USER}:khaledeldsoky/app.git HEAD:CD
                 """
 
                 }
