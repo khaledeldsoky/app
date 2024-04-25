@@ -6,6 +6,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "khaledmohamedatia/app"
     }
+
     tools {
         maven 'khaled'
     }
@@ -34,5 +35,9 @@ pipeline {
                 build job: 'cd', parameters: [string(name: 'GIT_COMMIT_REV', value: env.GIT_COMMIT_REV)]
         }
         }
+
+    }
+    parameters: {
+        string(name: 'GIT_COMMIT_REV', value: env.GIT_COMMIT_REV)
     }
 }
