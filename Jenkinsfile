@@ -17,11 +17,13 @@ pipeline {
     }
 
     stages {
+        
         stage('Clean workspace'){
             steps{
                 cleanWs()
             }
         }
+
         stage('Checkout') {
             steps {
                 // Check out the source code from Git
