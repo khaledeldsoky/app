@@ -2,16 +2,20 @@ pipeline {
     agent {
         label 'ec2'
     }
+
     tools {
         maven 'khaled'
     }
+
     environment {
         USER_NAME  =  "khaledeldsoky"
         EMAIL =  "khlaedmohamedeldsoky@gmail.com"
     }
+
     parameters {
         string(name: 'GIT_COMMIT_REV', defaultValue: env.GIT_COMMIT_REV)
     }
+
     stages {
         stage('Clean workspace'){
             steps{
@@ -24,8 +28,8 @@ pipeline {
                 git branch: 'CD', url: 'https://github.com/khaledeldsoky/app.git'
             }
         }
-        stage('Deploy App ') {
-
+        
+        stage('push change to git hub ') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
@@ -40,5 +44,7 @@ pipeline {
                 }
             }
         }
+
+
     }
 }
