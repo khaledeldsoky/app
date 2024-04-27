@@ -11,11 +11,13 @@ pipeline {
         maven 'khaled'
     }
     stages {
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/khaledeldsoky/app.git'
             }
         }
+
         stage('push image ') {
             steps {
                 script {
@@ -28,13 +30,14 @@ pipeline {
                 }
             }
         }
+
         stage("copy commit")
         {
             steps{
                 touch commit.txt
-                echo GIT_COMMIT_REV
             }
         }
+
         stage('Trigger CD job ') {
                 steps {
                 echo "triggering CD"
