@@ -3,7 +3,7 @@ pipeline {
     //     label 'ec2'
     // }
     agent any 
-    
+
     tools {
         maven 'khaled'
     }
@@ -34,7 +34,7 @@ pipeline {
         
         stage('get commit hash from '){
             steps{
-                String commit_hash = readFile file: "./ci/commit.txt"
+                String commit_hash = readFile file: "../ci/commit.txt"
             }
         }
 
