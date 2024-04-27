@@ -37,6 +37,7 @@ pipeline {
         {
             steps{
                 sh  """
+                    touch commmit.txt
                     echo ${GIT_COMMIT_REV} > commmit.txt
                     """
             }
