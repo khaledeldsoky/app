@@ -34,7 +34,9 @@ pipeline {
         
         stage('get commit hash from '){
             steps{
-                def commit_hash = readFile(file: '"../ci/commit.txt"')
+                script{
+                    def commit_hash = readFile(file: '"../ci/commit.txt"')
+                }
             }
         }
 
