@@ -32,7 +32,7 @@ pipeline {
         {
             steps{
                 touch commit.txt
-                echo ${GIT_COMMIT_REV}
+                echo GIT_COMMIT_REV
             }
         }
         stage('Trigger CD job ') {
