@@ -28,13 +28,13 @@ pipeline {
             }
         }
 
-        stage("copy commit"){
+        stage("touch commit and echo it file"){
             steps{
                 writeFile file: "commit.txt", text: "${GIT_COMMIT_REV}"
             }
         }
 
-        stage('push image ') {
+        stage('push image to dockerhub') {
             steps {
                 script {
                         env.GIT_COMMIT_REV = sh (script: 'git log -n 1 --pretty=format:"%h"', returnStdout: true)
