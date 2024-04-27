@@ -34,7 +34,7 @@ pipeline {
         
         stage('get commit hash from '){
             steps{
-                String commit_hash = readFile file: "../ci/commit.txt"
+                def commit_hash = readFile(file: '"../ci/commit.txt"')
             }
         }
 
