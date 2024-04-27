@@ -45,7 +45,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
                 sh """
-                sh image_tag.sh deployment.yml ${params.GIT_COMMIT_REV}
+                sh image_tag.sh app/deployment.yml ${params.GIT_COMMIT_REV}
                 git config --global user.name ${USER_NAME}
                 git config --global user.email ${EMAIL}
                 cat deployment.yml 
