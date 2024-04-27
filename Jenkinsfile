@@ -1,8 +1,9 @@
 pipeline {
-    agent {
-        label 'ec2'
-    }
-
+    // agent {
+    //     label 'ec2'
+    // }
+    agent any 
+    
     tools {
         maven 'khaled'
     }
@@ -13,7 +14,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'GIT_COMMIT_REV', defaultValue: env.GIT_COMMIT_REV)
+        string(name: 'GIT_COMMIT_REV', defaultValue: commit_hash)
     }
 
     stages {
@@ -31,6 +32,12 @@ pipeline {
             }
         }
         
+        stage('get commit hash from '){
+            steps{
+                String commit_hash = readFile file: "./ci/commit.txt"
+            }
+        }
+
         stage('push change to git hub ') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "github_token", usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
