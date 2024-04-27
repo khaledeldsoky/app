@@ -32,9 +32,9 @@ pipeline {
         }
 
         stage("copy commit")
-        {
+{
             steps{
-                touch commit.txt
+                writeFile file: "commit.file", text: "${GIT_COMMIT_REV}"
             }
         }
 
