@@ -14,7 +14,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'GIT_COMMIT_REV', defaultValue: commit_hash)
+        string(name: 'GIT_COMMIT_REV', defaultValue: env.GIT_COMMIT_REV)
     }
 
     stages {
@@ -35,7 +35,8 @@ pipeline {
         stage('get commit hash from '){
             steps{
                 script{
-                    def commit_hash = readFile(file: '"../ci/commit.txt"')
+                    def commit_hash = readFile(file: "../ci/commit.txt")
+                    env.GIT_COMMIT_REV = commit_hash
                 }
             }
         }
