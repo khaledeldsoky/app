@@ -1,20 +1,36 @@
 pipeline {
 
     agent any
+
     environment {
         DOCKER_IMAGE_NAME = "khaledmohamedatia/app"
     }
+
     parameters {
         string(name: 'GIT_COMMIT_REV', defaultValue: env.GIT_COMMIT_REV)
     }
+
     tools {
         maven 'khaled'
     }
+
     stages {
+
+        stage('Clean workspace'){
+            steps{
+                cleanWs()
+            }
+        }
 
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/khaledeldsoky/app.git'
+            }
+        }
+
+        stage("copy commit"){
+            steps{
+                writeFile file: "commit.txt", text: "${GIT_COMMIT_REV}"
             }
         }
 
@@ -31,19 +47,11 @@ pipeline {
             }
         }
 
-        stage("copy commit")
-{
-            steps{
-                writeFile file: "commit.file", text: "${GIT_COMMIT_REV}"
-            }
-        }
-
         stage('Trigger CD job ') {
                 steps {
                 echo "triggering CD"
                 build job: 'cd', parameters: [string(name: 'GIT_COMMIT_REV', value: env.GIT_COMMIT_REV)] }
         }
-
 
     }
 
