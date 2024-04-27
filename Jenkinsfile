@@ -36,10 +36,7 @@ pipeline {
         stage("copy commit")
         {
             steps{
-                sh  """
-                    touch commmit.txt
-                    echo ${GIT_COMMIT_REV} > commmit.txt
-                    """
+                touch commit.txt
             }
         }
 
